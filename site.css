@@ -164,17 +164,17 @@ h4 { font-size: .875rem; font-weight: 600; }
   box-shadow: 0 0 0 3px var(--accent-dim);
 }
 #site-search::placeholder { color: var(--text-subtle); }
+/* REPLACE the existing .search-results rule */
 .search-results {
-  position: absolute;
-  top: calc(100% + 6px);
-  left: 0; right: 0;
+  position: fixed;
   background: var(--bg-2);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  z-index: 200;
+  z-index: 9999;
   max-height: 420px;
   overflow-y: auto;
   box-shadow: 0 8px 32px rgba(0,0,0,.5);
+  min-width: 320px;
 }
 .search-results.hidden { display: none; }
 .search-result {
