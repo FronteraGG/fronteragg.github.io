@@ -1,11 +1,12 @@
 (function(){
   function normalize(s){ return (s||'').toLowerCase(); }
-  function rootBase(){
+function rootBase(){
     var depth = window.FRONTERA_DEPTH||0;
     var parts = window.location.pathname.split('/');
-    parts = parts.slice(0, parts.length - depth - 1);
+    // Remove the filename and 'depth' directory segments
+    parts = parts.slice(0, parts.length - 1 - depth);
     return parts.join('/') + '/';
-  }
+}
 function init(){
     var input = document.getElementById('site-search');
     var box   = document.getElementById('search-results');
