@@ -28,7 +28,7 @@ function init(){
 }
   function renderResults(query, box){
     if(!window.FRONTERA_SEARCH_INDEX){ box.classList.add('hidden'); return; }
-    var base = rootBase();
+    var base = window.FRONTERA_ROOT||'/';
     var q = normalize(query).trim();
     if(!q){ box.classList.add('hidden'); return; }
     var parts = q.split(/\s+/).filter(Boolean);
