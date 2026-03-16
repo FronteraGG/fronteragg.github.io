@@ -1,5 +1,4 @@
 (function(){
-  var index = null;
   function normalize(s){ return (s||'').toLowerCase(); }
   function init(){
     var input = document.getElementById('site-search');
@@ -12,6 +11,7 @@
   }
   function renderResults(query, box){
     if(!window.FRONTERA_SEARCH_INDEX){ box.classList.add('hidden'); return; }
+    var base = window.FRONTERA_BASE||'';
     var q = normalize(query).trim();
     if(!q){ box.classList.add('hidden'); return; }
     var parts = q.split(/\s+/).filter(Boolean);
@@ -31,7 +31,7 @@
     } else {
       box.innerHTML = results.map(function(r){
         var meta = (r.entry.text||'').replace(/[<>]/g,'').substring(0,80);
-        return '<div class="search-result"><a href="'+r.entry.url+'">'+r.entry.title+'</a><div class="sr-meta">'+meta+'</div></div>';
+        return '<div class="search-result"><a href="'+base+r.entry.url+'">'+r.entry.title+'</a><div class="sr-meta">'+meta+'</div></div>';
       }).join('');
     }
     box.classList.remove('hidden');
